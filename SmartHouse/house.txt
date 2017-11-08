@@ -1,0 +1,55 @@
+I have attended all parts of the coursework and wrote the required classes. In addition,
+I created a special class for tasks, because I found this way easier to use and it 
+supported looser coupling. Other additional classes are Reader – used for parsing and 
+separating the input into keyword and parameters, the Interpreter – used to interpret 
+a keyword, and the Creator – used to create the right object. Using the last two, it is
+very easy to add newly defined appliances and their tasks to the project (we just
+append them to a list and to a switch-case). My classes and use of inheritance:
+
+Main
+Reader
+Interpreter
+Creator
+House
+Meter	-ElectricMeter
+		-GasMeter
+		-WaterMeter
+
+Appliance	-OneTimeAppliance	-WashingMachine
+								-DishWasher
+								-Kettle
+								-Shower	-ElectricShower
+										-PowerShower
+								-Cooker -ElectricCooker
+										-GasCooker
+			-OnOffAppliance		-Tv
+								-NightLight
+			-Refrigerator
+			(part of the extension from now)
+			-Boiler
+			-GeneratingAppliance	-SolarPanel
+									-WindTurbine
+
+People	-GrownUp
+		-Child
+		
+Task	-OneTimeTask (WashingMachine, DishWasher, Kettle)
+		-OnOffTask (Tv, NightLight)
+		-DoubleApplianceTask (Shower, Cooker)		
+
+To run my code, simply type:
+	java Main [nameOfTextFile.txt]
+in the command line in the same folder where the classes are compiled. If it matters, I
+changed the run configurations in Eclipse to be able to do that. The file myHouse.txt
+which I provided is an example of a test configuration, that can be used by typing
+	java Main myHouse.txt
+in the command line.
+My program also writes the simulation to an output.txt (including Exception messages)
+and prints on the screen the values of the meters at the end of the day.
+
+My extension consists of an automated Boiler and two GeneratingAppliances. To simulate
+a centralized heating system, I modeled the weather and the temperature in the House.
+Thus, the boiler is on if the temperature in the House is below 22 degreees C. As
+for the GeneratingAppliances, they depend on the weather(sunny, rainy, cloudy, windy).
+If it's sunny, the SolarPanel generates electricity and if it's windy, the WindTurbine
+does. This energy is then used by other appliances.
